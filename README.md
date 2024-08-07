@@ -1,1 +1,1 @@
-# React Three Fiber Landinn Page
+# React Three Fiber and GSAP Landing Page
