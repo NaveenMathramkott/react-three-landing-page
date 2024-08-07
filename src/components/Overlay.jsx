@@ -11,19 +11,18 @@ const Overlay = () => {
   const jdOne = useRef();
   const jdTwo = useRef();
   const jdThree = useRef();
-  const groupRef = useRef();
 
   const { scene, camera } = useThree();
   const tl = gsap.timeline();
 
   useLayoutEffect(() => {
     new ScrollTrigger({});
-    tl.to(groupRef.current.position, {
+    tl.to(scene.position, {
       x: 2,
       y: 0,
       z: 0,
     })
-      .to(groupRef.current.rotation, {
+      .to(scene.rotation, {
         x: 0,
         y: -0.3,
         z: 0,
@@ -40,7 +39,7 @@ const Overlay = () => {
           immediateRender: false,
         },
       })
-      .to(groupRef.current.position, {
+      .to(scene.position, {
         x: -3,
         y: 1,
         z: 2,
@@ -52,7 +51,7 @@ const Overlay = () => {
           immediateRender: false,
         },
       })
-      .to(groupRef.current.rotation, {
+      .to(scene.rotation, {
         x: 0,
         y: Math.PI * 2,
         z: 0,
@@ -101,7 +100,7 @@ const Overlay = () => {
           immediateRender: false,
         },
       })
-      .to(groupRef.current.position, {
+      .to(scene.position, {
         x: 2,
         y: 0,
         z: 0,
@@ -153,11 +152,11 @@ const Overlay = () => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <group ref={groupRef}>
+      <>
         <Glass ref={jdOne} position={[0, -2, 0]} />
         <Glass ref={jdTwo} position={[-1, -2, -1.3]} rotation={[0, 0, 0.3]} />
         <Glass ref={jdThree} position={[1, -2, -1.3]} rotation={[0, 0, -0.3]} />
-      </group>
+      </>
     </Suspense>
   );
 };
